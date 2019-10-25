@@ -1,51 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="match_parent">
+>
+    <org.opencv.android.JavaCameraView
+        android:id="@+id/main_surface"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" />
+
+<android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="30dp"
+    android:layout_alignParentBottom="true">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleType="centerCrop"
-        android:src="@drawable/test"/>
+        android:id="@+id/iv_gallery"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/gallery"
+        android:scaleType="fitXY"
+        tools:ignore="MissingConstraints" />
 
+    <ImageView
+        android:id="@+id/iv_filter"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:background="@drawable/filter"
+        android:scaleType="fitXY"
+        tools:ignore="MissingConstraints" />
 
-    <android.support.constraint.ConstraintLayout
+    <TextView
+        android:id="@+id/tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        android:layout_alignParentBottom="true">
+        android:text="FACES DETECTADAS: 0"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        tools:ignore="MissingConstraints" />
+</android.support.constraint.ConstraintLayout>
 
-        <ImageView
-            android:id="@+id/iv_gallery"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            app:layout_constraintStart_toStartOf="parent"
-            android:background="@drawable/gallery"
-            android:scaleType="fitXY"/>
+<LinearLayout
+    android:id="@+id/ll_filter"
+    android:layout_width="match_parent"
+    android:layout_height="90dp"
+    android:background="#FFFFFF"
+    android:layout_alignParentBottom="true"
+    android:visibility="invisible">
 
-        <ImageView
-            android:id="@+id/iv_filter"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:background="@drawable/filter"
-            android:scaleType="fitXY"/>
-    </android.support.constraint.ConstraintLayout>
-
-    <LinearLayout
-        android:id="@+id/ll_filter"
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_filterList"
         android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:background="#FFFFFF"
-        android:layout_alignParentBottom="true"
-        android:visibility="invisible">
+        android:layout_height="match_parent"/>
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_filterList"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-
-    </LinearLayout>
+</LinearLayout>
 
 </RelativeLayout>
